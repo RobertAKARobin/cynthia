@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    title Cynthia Corio-Poli
+    link(rel="stylesheet" href="css/styles.css")
+    script(src="js/jquery.min.js")
+    script(src="js/script.js")
+  body
+    - var c = "collections"
+    - var a = "about"
+    nav
+      ul.menu
+        li
+          a(href="/") HOME
+        li
+          a(href="/#{c}") COLLECTIONS
+          ul.submenu
+            li: a(href="/#{c}/rings") RINGS
+            li: a(href="/#{c}/accessories") ACCESSORIES
+            li: a(href="/#{c}/art") ART OBJECTS
+        li
+          a(href="/#{a}") ABOUT
+          ul.submenu
+            li: a(href="/#{a}") ME
+            li: a(href="/#{a}/techniques") TECHNIQUES
+        li
+          a(href="/contact") CONTACT
+    
+    header
+      h1 Cynthia Corio-Poli
+    
+    main
+    
+    footer
+    
