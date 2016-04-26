@@ -1,3 +1,8 @@
+$nav-height: 50px;
+$foot-height: 50px;
+$grey-lt: #949494;
+$grey-md: #595959;
+
 *{
   margin:0;
   border:0;
@@ -17,15 +22,17 @@
 }
 html{
   font-family:"Open Sans", "Helvetica Neue", Helvetica, sans-serif;
-  font-size:13px;
+  font-size:14px;
 }
 body{
-  background-color:#000;
+  background-color:#222;
   color:#fff;
   text-align:center;
 }
 nav{
   background-color:#000;
+  position:relative;
+  z-index:9999;
   ul, li{
     vertical-align:top;
   }
@@ -40,6 +47,9 @@ nav{
       position:relative;
       width:25%;
       
+      a{
+        transition: background-color 0.2s;
+      }
       &:hover a,
       &.active a{
         background-color:#2d2d2d;
@@ -54,11 +64,13 @@ nav{
         top:100%;
         left:0;
         width:100%;
-        display:none;
-        z-index:9999;
+        opacity:0;
+        visibility:hidden;
+        transition:visibility 0.2s, opacity 0.2s;
       }
       &:hover .submenu{
-        display:block;
+        visibility:visible;
+        opacity:1;
       }
     }
   }
@@ -73,7 +85,54 @@ nav{
     display:block;
     font-weight:bold;
     font-size:16px;
-    line-height:80px;
+    line-height:$nav-height;
     width:100%;
+  }
+}
+header{
+  animation: fadeIn 2s;
+  margin:50px auto;
+  
+  .home &{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  
+  h1{
+    font-size:42px;
+    font-weight:bold;
+    letter-spacing:-2px;
+    
+    & + p{
+      color:$grey-lt;
+      letter-spacing:3px;
+      line-height:16px;
+    }
+  }
+}
+footer{
+  display:block;
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  background-color:#000;
+  line-height:$foot-height;
+  color:$grey-md;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
   }
 }

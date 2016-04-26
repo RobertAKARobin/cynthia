@@ -17,17 +17,19 @@
 
 html {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 body {
-  background-color: #000;
+  background-color: #222;
   color: #fff;
   text-align: center;
 }
 
 nav {
   background-color: #000;
+  position: relative;
+  z-index: 9999;
 }
 nav ul, nav li {
   vertical-align: top;
@@ -42,6 +44,9 @@ nav .menu > li {
   position: relative;
   width: 25%;
 }
+nav .menu > li a {
+  transition: background-color 0.2s;
+}
 nav .menu > li:hover a, nav .menu > li.active a {
   background-color: #2d2d2d;
 }
@@ -53,11 +58,13 @@ nav .menu > li .submenu {
   top: 100%;
   left: 0;
   width: 100%;
-  display: none;
-  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.2s, opacity 0.2s;
 }
 nav .menu > li:hover .submenu {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 nav .submenu > li {
   display: block;
@@ -66,8 +73,54 @@ nav a {
   display: block;
   font-weight: bold;
   font-size: 16px;
-  line-height: 80px;
+  line-height: 50px;
   width: 100%;
+}
+
+header {
+  animation: fadeIn 2s;
+  margin: 50px auto;
+}
+.home header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+header h1 {
+  font-size: 42px;
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+header h1 + p {
+  color: #949494;
+  letter-spacing: 3px;
+  line-height: 16px;
+}
+
+footer {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #000;
+  line-height: 50px;
+  color: #595959;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
