@@ -37,7 +37,29 @@ nav{
     
     & > li{
       display:inline-block;
+      position:relative;
       width:25%;
+      
+      &:hover a,
+      &.active a{
+        background-color:#2d2d2d;
+        
+        &:hover{
+          background-color:#656565;
+        }
+      }
+      
+      .submenu{
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
+        display:none;
+        z-index:9999;
+      }
+      &:hover .submenu{
+        display:block;
+      }
     }
   }
   .submenu{
@@ -53,9 +75,5 @@ nav{
     font-size:16px;
     line-height:80px;
     width:100%;
-    
-    &:hover{
-      background-color:#656565;
-    }
   }
 }

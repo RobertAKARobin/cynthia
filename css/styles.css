@@ -39,7 +39,25 @@ nav .menu {
 }
 nav .menu > li {
   display: inline-block;
+  position: relative;
   width: 25%;
+}
+nav .menu > li:hover a, nav .menu > li.active a {
+  background-color: #2d2d2d;
+}
+nav .menu > li:hover a:hover, nav .menu > li.active a:hover {
+  background-color: #656565;
+}
+nav .menu > li .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: none;
+  z-index: 9999;
+}
+nav .menu > li:hover .submenu {
+  display: block;
 }
 nav .submenu > li {
   display: block;
@@ -50,9 +68,6 @@ nav a {
   font-size: 16px;
   line-height: 80px;
   width: 100%;
-}
-nav a:hover {
-  background-color: #656565;
 }
 
 /*# sourceMappingURL=styles.css.map */
