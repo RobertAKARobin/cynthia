@@ -11,21 +11,21 @@
   <body data-ng-app="app">
     <nav>
       <ul class="menu">
-        <li class="active"><a data-ui-sref="main">HOME</a></li>
-        <li><a data-ui-sref="cxn">COLLECTIONS</a>
+        <li class="active"><a data-ui-sref="static({a: 'home'})">HOME</a></li>
+        <li><a data-ui-sref="collection">COLLECTIONS</a>
           <ul class="submenu">
-            <li><a data-ui-sref="cxn({a: 'rings'})">RINGS</a></li>
-            <li><a data-ui-sref="cxn({a: 'accessories'})">ACCESSORIES</a></li>
-            <li><a data-ui-sref="cxn({a: 'art'})">ART OBJECTS</a></li>
+            <li><a data-ui-sref="collection({a: 'rings'})">RINGS</a></li>
+            <li><a data-ui-sref="collection({a: 'accessories'})">ACCESSORIES</a></li>
+            <li><a data-ui-sref="collection({a: 'art'})">ART OBJECTS</a></li>
           </ul>
         </li>
-        <li><a data-ui-sref="abt">ABOUT</a>
+        <li><a data-ui-sref="static({a: 'about'})">ABOUT</a>
           <ul class="submenu">
-            <li><a data-ui-sref="abt">ME</a></li>
-            <li><a data-ui-sref="abt({a: 'techniques'})">TECHNIQUES</a></li>
+            <li><a data-ui-sref="static({a: 'about'})">ME</a></li>
+            <li><a data-ui-sref="static({a: 'techniques'})">TECHNIQUES</a></li>
           </ul>
         </li>
-        <li><a data-ui-sref="contact">CONTACT</a></li>
+        <li><a data-ui-sref="static({a: 'contact'})">CONTACT</a></li>
       </ul>
     </nav>
     <header>
