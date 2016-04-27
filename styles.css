@@ -30,11 +30,17 @@ body {
   color: #fff;
   text-align: center;
   height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 nav {
+  display: block;
   background-color: #000;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 9999;
 }
 nav ul, nav li {
@@ -118,6 +124,32 @@ footer {
   background-color: #000;
   line-height: 50px;
   color: #595959;
+}
+
+.gallery {
+  font-size: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.gallery li {
+  display: block;
+  flex-basis: 24%;
+  flex-grow: 1;
+  background-size: cover;
+  background-position: center center;
+  height: 18vw;
+  margin: 1%;
+  animation: fadeIn 1s;
+  opacity: 1;
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.gallery li:hover {
+  opacity: 0.8;
 }
 
 @keyframes fadeIn {

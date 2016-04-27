@@ -82,7 +82,7 @@
     Imgur.load("rings").then(function(response){
       response.data.data.images.forEach(function(image){
         image.thumb = image.link.replace(image.id, function(match){
-          return(match + "m");
+          return(match + "l");
         });
       });
       angular.extend(vm, response.data.data);

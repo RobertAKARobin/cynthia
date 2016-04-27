@@ -1,7 +1,11 @@
 <p>{{description}}</p>
 
 <ul class="gallery">
-  <li data-ng-repeat="image in images">
-    <img data-ng-src="{{image.thumb}}" alt="{{image.link}}" data-ng-click="zoom(image)" />
+  <li data-ng-repeat="image in images" style="background-image:url({{image.thumb}})">
+    <p>Hello</p>
   </li>
 </ul>
+
+<div class="lightbox">
+  <img data-ng-src="{{lightbox.link}}" />
+</div>

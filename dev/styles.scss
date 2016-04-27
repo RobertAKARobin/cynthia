@@ -33,10 +33,16 @@ body{
   color:#fff;
   text-align:center;
   height:100%;
+  padding-top:$nav-height;
+  padding-bottom:$foot-height;
 }
 nav{
+  display:block;
   background-color:#000;
-  position:relative;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
   z-index:9999;
   ul, li{
     vertical-align:top;
@@ -132,6 +138,34 @@ footer{
   background-color:#000;
   line-height:$foot-height;
   color:$grey-md;
+}
+
+.gallery{
+  font-size:0;
+  width:100%;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-around;
+  
+  li{
+    display:block;
+    flex-basis:24%;
+    flex-grow:1;
+    background-size:cover;
+    background-position:center center;
+    height:18vw;
+    margin:1%;
+    animation:fadeIn 1s;
+    opacity:1;
+    transition:opacity 0.2s;
+    cursor:pointer;
+    
+    &:hover{
+      opacity:0.8;
+    }
+  }
 }
 
 @keyframes fadeIn{
