@@ -1,1 +1,7 @@
-<p>{{content}}</p>
+<p>{{description}}</p>
+
+<ul class="gallery">
+  <li data-ng-repeat="image in images">
+    <img data-ng-src="{{image.thumb}}" alt="{{image.link}}" data-ng-click="zoom(image)" />
+  </li>
+</ul>

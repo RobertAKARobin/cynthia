@@ -7,8 +7,29 @@
   ])
   .config(Config)
   .run(Run)
+  .factory("Imgur", Imgur)
   .controller("ctrlPage", CtrlPage)
   .controller("ctrlCollection", CtrlCollection);
+  
+  Imgur.$inject = ["$http"];
+  function Imgur($http){
+    var Imgur = {};
+    var albums = {
+      "rings": "g1xta",
+      "art": "k1KwU",
+      "accessories": "Da9IB",
+      "misc": "CUS9u"
+    }
+    Imgur.load = function(albumName){
+      var albumId = albums[albumName];
+      return $http.get("https://api.imgur.com/3/album/" + albumId, {
+        headers: {
+          "Authorization": "Client-ID df6bf38c6d672bc"
+        }
+      });
+    }
+    return Imgur;
+  }
   
   Config.$inject = ["$stateProvider", "$locationProvider", "$urlRouterProvider"];
   function Config($stateProvider, $locationProvider, $urlRouterProvider){
@@ -55,9 +76,16 @@
     vm.content = "Hello, world!"
   }
   
-  CtrlCollection.$inject = ["$scope"];
-  function CtrlCollection($scope){
+  CtrlCollection.$inject = ["$scope", "Imgur"];
+  function CtrlCollection($scope, Imgur){
     var vm = $scope;
-    vm.content = "This is a collection."
+    Imgur.load("rings").then(function(response){
+      response.data.data.images.forEach(function(image){
+        image.thumb = image.link.replace(image.id, function(match){
+          return(match + "m");
+        });
+      });
+      angular.extend(vm, response.data.data);
+    });
   }
 })();
