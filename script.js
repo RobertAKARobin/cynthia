@@ -7,20 +7,23 @@
   ])
   .config(Config);
   
-  Config.$inject = ["$stateProvider", "$urlRouterProvider"];
-  function Config($stateProvider, $urlRouterProvider){
+  Config.$inject = ["$stateProvider", "$locationProvider", "$urlRouterProvider"];
+  function Config($stateProvider, $locationProvider, $urlRouterProvider){
+    if(window.location.hostname !== "localhost"){
+      $locationProvider.html5Mode(true);
+    }
     $stateProvider
     .state("main", {
       url: "/"
     })
     .state("cxn", {
-      url: "collection/:a"
+      url: "/collection/:a"
     })
     .state("abt", {
-      url: "about/:a"
+      url: "/about/:a"
     })
     .state("contact", {
-      url: "contact"
+      url: "/contact"
     });
     $urlRouterProvider.otherwise("/");
   }
