@@ -11,26 +11,27 @@
   <body data-ng-app="app">
     <nav>
       <ul class="menu">
-        <li class="active"><a data-ui-sref="static({a: 'home'})">HOME</a></li>
-        <li><a data-ui-sref="collection">COLLECTIONS</a>
+        <li class="active"><a data-ui-sref="home">HOME</a></li>
+        <li><a data-ui-sref="page({title: 'galleries'})">COLLECTIONS</a>
           <ul class="submenu">
-            <li><a data-ui-sref="collection({a: 'rings'})">RINGS</a></li>
-            <li><a data-ui-sref="collection({a: 'accessories'})">ACCESSORIES</a></li>
-            <li><a data-ui-sref="collection({a: 'art'})">ART OBJECTS</a></li>
+            <li><a data-ui-sref="page({title: 'gallery', sub: 'rings'})">RINGS</a></li>
+            <li><a data-ui-sref="page({title: 'gallery', sub: 'accessories'})">ACCESSORIES</a></li>
+            <li><a data-ui-sref="page({title: 'gallery', sub: 'art'})">ART OBJECTS</a></li>
           </ul>
         </li>
-        <li><a data-ui-sref="static({a: 'about'})">ABOUT</a>
+        <li><a data-ui-sref="page({title: 'about'})">ABOUT</a>
           <ul class="submenu">
-            <li><a data-ui-sref="static({a: 'about'})">ME</a></li>
-            <li><a data-ui-sref="static({a: 'techniques'})">TECHNIQUES</a></li>
+            <li><a data-ui-sref="page({title: 'about'})">ME</a></li>
+            <li><a data-ui-sref="page({title: 'techniques'})">TECHNIQUES</a></li>
           </ul>
         </li>
-        <li><a data-ui-sref="static({a: 'contact'})">CONTACT</a></li>
+        <li><a data-ui-sref="page({title: 'contact'})">CONTACT</a></li>
       </ul>
     </nav>
     <header>
       <h1>CYNTHIA CORIO - POLI</h1>
       <p>DESIGN</p>
+      <h2 data-ng-bind="title"></h2>
     </header>
     <main data-ui-view></main>
     <footer>

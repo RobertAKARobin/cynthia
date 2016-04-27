@@ -6,39 +6,40 @@
     "ui.router"
   ])
   .config(Config)
-  .controller("ctrlCollection", CtrlCollection)
-  .controller("ctrlStatic", CtrlStatic);
+  .run(Run)
+  .controller("ctrlMain", CtrlMain);
   
   Config.$inject = ["$stateProvider", "$locationProvider", "$urlRouterProvider"];
   function Config($stateProvider, $locationProvider, $urlRouterProvider){
-    if(window.location.hostname !== "localhost"){
-      $locationProvider.html5Mode(true);
-    }
+    $locationProvider.html5Mode(true);
     $stateProvider
-    .state("collection", {
-      url: "/collection/:a",
-      templateUrl: "/html/collection.html",
-      controller: "ctrlCollection"
+    .state("home", {
+      url: "/"
     })
-    .state("static", {
-      url: "/:a",
-      template: "<div data-ng-include='templateUrl()'></div>",
-      controller: "ctrlStatic"
+    .state("page", {
+      url: "/:title/:sub",
+      controller: "ctrlMain",
+      templateUrl: function($stateParams){
+        return("/html/" + $stateParams.title + ".html");
+      }
     });
     $urlRouterProvider.otherwise("/home");
   }
   
-  CtrlCollection.$inject = ["$scope", "$stateParams"];
-  function CtrlCollection($scope, $stateParams){
-    var vm = $scope;
-    vm.title  = $stateParams.a;
+  Run.$inject = ["$rootScope", "$state"];
+  function Run($rootScope, $state){
+    $rootScope.$on("$stateChangeSuccess", function(){
+      var title = $state.params.title;
+      if(title === "gallery" && $state.params.sub){
+        title = $state.params.sub;
+      }
+      $rootScope.title = title;
+    })
   }
   
-  CtrlStatic.$inject = ["$scope", "$stateParams"];
-  function CtrlStatic($scope, $stateParams){
+  CtrlMain.$inject = ["$scope"];
+  function CtrlMain($scope){
     var vm = $scope;
-    vm.templateUrl = function(){
-      return("/html/" + $stateParams.a + ".html");
-    }
+    vm.content = "Hello, world!"
   }
 })();

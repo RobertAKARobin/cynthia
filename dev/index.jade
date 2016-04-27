@@ -13,24 +13,25 @@ html
     nav
       ul.menu
         li.active
-          a(data-ui-sref="static({a: 'home'})") HOME
+          a(data-ui-sref="home") HOME
         li
-          a(data-ui-sref="collection") COLLECTIONS
+          a(data-ui-sref="page({title: 'galleries'})") COLLECTIONS
           ul.submenu
-            li: a(data-ui-sref="collection({a: 'rings'})") RINGS
-            li: a(data-ui-sref="collection({a: 'accessories'})") ACCESSORIES
-            li: a(data-ui-sref="collection({a: 'art'})") ART OBJECTS
+            li: a(data-ui-sref="page({title: 'gallery', sub: 'rings'})") RINGS
+            li: a(data-ui-sref="page({title: 'gallery', sub: 'accessories'})") ACCESSORIES
+            li: a(data-ui-sref="page({title: 'gallery', sub: 'art'})") ART OBJECTS
         li
-          a(data-ui-sref="static({a: 'about'})") ABOUT
+          a(data-ui-sref="page({title: 'about'})") ABOUT
           ul.submenu
-            li: a(data-ui-sref="static({a: 'about'})") ME
-            li: a(data-ui-sref="static({a: 'techniques'})") TECHNIQUES
+            li: a(data-ui-sref="page({title: 'about'})") ME
+            li: a(data-ui-sref="page({title: 'techniques'})") TECHNIQUES
         li
-          a(data-ui-sref="static({a: 'contact'})") CONTACT
+          a(data-ui-sref="page({title: 'contact'})") CONTACT
     
     header
       h1 CYNTHIA CORIO - POLI
       p DESIGN
+      h2(data-ng-bind="title")
     
     main(data-ui-view)
     
