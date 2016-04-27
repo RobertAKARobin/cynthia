@@ -7,7 +7,8 @@
   ])
   .config(Config)
   .run(Run)
-  .controller("ctrlMain", CtrlMain);
+  .controller("ctrlPage", CtrlPage)
+  .controller("ctrlGallery", CtrlGallery);
   
   Config.$inject = ["$stateProvider", "$locationProvider", "$urlRouterProvider"];
   function Config($stateProvider, $locationProvider, $urlRouterProvider){
@@ -17,11 +18,16 @@
       url: "/"
     })
     .state("page", {
-      url: "/:title/:sub",
-      controller: "ctrlMain",
+      url: "/:title/",
+      controller: "ctrlPage",
       templateUrl: function($stateParams){
         return("/html/" + $stateParams.title + ".html");
       }
+    })
+    .state("gallery", {
+      url: "/galleries/:title/",
+      controller: "ctrlGallery",
+      templateUrl: "/html/gallery.html"
     });
     $urlRouterProvider.otherwise("/home");
   }
@@ -37,9 +43,15 @@
     })
   }
   
-  CtrlMain.$inject = ["$scope"];
-  function CtrlMain($scope){
+  CtrlPage.$inject = ["$scope"];
+  function CtrlPage($scope){
     var vm = $scope;
     vm.content = "Hello, world!"
+  }
+  
+  CtrlGallery.$inject = ["$scope"];
+  function CtrlGallery($scope){
+    var vm = $scope;
+    vm.content = "This is a gallery."
   }
 })();
