@@ -3,34 +3,35 @@
   <head>
     <title>Cynthia Corio-Poli, Design</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="dev/jquery.min.js"></script>
+    <script src="dev/angular.min.js"></script>
+    <script src="dev/angular-ui-router.min.js"></script>
     <script src="script.js"></script>
   </head>
-  <body class="home">
+  <body data-ng-app="app">
     <nav>
       <ul class="menu">
-        <li class="active"><a href="/">HOME</a></li>
-        <li><a href="/collections">COLLECTIONS</a>
+        <li class="active"><a data-ui-sref="main">HOME</a></li>
+        <li><a data-ui-sref="cxn">COLLECTIONS</a>
           <ul class="submenu">
-            <li><a href="/collections/rings.html">RINGS</a></li>
-            <li><a href="/collections/accessories.html">ACCESSORIES</a></li>
-            <li><a href="/collections/art.html">ART OBJECTS</a></li>
+            <li><a data-ui-sref="cxn({a: 'rings'})">RINGS</a></li>
+            <li><a data-ui-sref="cxn({a: 'accessories'})">ACCESSORIES</a></li>
+            <li><a data-ui-sref="cxn({a: 'art'})">ART OBJECTS</a></li>
           </ul>
         </li>
-        <li><a href="/about">ABOUT</a>
+        <li><a data-ui-sref="abt">ABOUT</a>
           <ul class="submenu">
-            <li><a href="/about">ME</a></li>
-            <li><a href="/about/techniques.html">TECHNIQUES</a></li>
+            <li><a data-ui-sref="abt">ME</a></li>
+            <li><a data-ui-sref="abt({a: 'techniques'})">TECHNIQUES</a></li>
           </ul>
         </li>
-        <li><a href="/contact.html">CONTACT</a></li>
+        <li><a data-ui-sref="contact">CONTACT</a></li>
       </ul>
     </nav>
     <header>
       <h1>CYNTHIA CORIO - POLI</h1>
       <p>DESIGN</p>
     </header>
-    <main></main>
+    <main data-ui-view></main>
     <footer>
       <p>&copy; CYNTHIA CORIO-POLI, 2016</p>
     </footer>

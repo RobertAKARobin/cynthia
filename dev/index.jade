@@ -3,34 +3,35 @@ html
   head
     title Cynthia Corio-Poli, Design
     link(rel="stylesheet" href="styles.css")
-    script(src="dev/jquery.min.js")
+    script(src="dev/angular.min.js")
+    script(src="dev/angular-ui-router.min.js")
     script(src="script.js")
-  body.home
+  body(data-ng-app="app")
     - var c = "collections"
     - var a = "about"
     nav
       ul.menu
         li.active
-          a(href="/") HOME
+          a(data-ui-sref="main") HOME
         li
-          a(href="/#{c}") COLLECTIONS
+          a(data-ui-sref="cxn") COLLECTIONS
           ul.submenu
-            li: a(href="/#{c}/rings.html") RINGS
-            li: a(href="/#{c}/accessories.html") ACCESSORIES
-            li: a(href="/#{c}/art.html") ART OBJECTS
+            li: a(data-ui-sref="cxn({a: 'rings'})") RINGS
+            li: a(data-ui-sref="cxn({a: 'accessories'})") ACCESSORIES
+            li: a(data-ui-sref="cxn({a: 'art'})") ART OBJECTS
         li
-          a(href="/#{a}") ABOUT
+          a(data-ui-sref="abt") ABOUT
           ul.submenu
-            li: a(href="/#{a}") ME
-            li: a(href="/#{a}/techniques.html") TECHNIQUES
+            li: a(data-ui-sref="abt") ME
+            li: a(data-ui-sref="abt({a: 'techniques'})") TECHNIQUES
         li
-          a(href="/contact.html") CONTACT
+          a(data-ui-sref="contact") CONTACT
     
     header
       h1 CYNTHIA CORIO - POLI
       p DESIGN
     
-    main
+    main(data-ui-view)
     
     footer
       p &copy; CYNTHIA CORIO-POLI, 2016
