@@ -8,7 +8,7 @@
   .config(Config)
   .run(Run)
   .controller("ctrlPage", CtrlPage)
-  .controller("ctrlGallery", CtrlGallery);
+  .controller("ctrlCollection", CtrlCollection);
   
   Config.$inject = ["$stateProvider", "$locationProvider", "$urlRouterProvider"];
   function Config($stateProvider, $locationProvider, $urlRouterProvider){
@@ -18,28 +18,34 @@
       url: "/"
     })
     .state("page", {
-      url: "/:title/",
+      url: "/:title",
       controller: "ctrlPage",
       templateUrl: function($stateParams){
         return("/html/" + $stateParams.title + ".html");
       }
     })
-    .state("gallery", {
-      url: "/galleries/:title/",
-      controller: "ctrlGallery",
-      templateUrl: "/html/gallery.html"
+    .state("collection", {
+      url: "/collections/:title",
+      controller: "ctrlCollection",
+      templateUrl: "/html/collection.html"
     });
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/");
   }
   
-  Run.$inject = ["$rootScope", "$state"];
-  function Run($rootScope, $state){
+  Run.$inject = ["$rootScope", "$state", "$location"];
+  function Run($rootScope, $state, $location){
+    $(".menu a").each(function(i, link){
+      if(link.href.trim() !== "") return;
+      link.href = $state.href(
+        (link.getAttribute("data-state") || "page"),
+        {title: link.textContent.trim().toLowerCase()}
+      );
+    })
     $rootScope.$on("$stateChangeSuccess", function(){
-      var title = $state.params.title;
-      if(title === "gallery" && $state.params.sub){
-        title = $state.params.sub;
-      }
-      $rootScope.title = title;
+      $rootScope.title = $state.params.title;
+      $(".menu > li").removeClass("active");
+      $(".menu a[href='" + $location.$$path + "']")
+        .closest(".menu > li").addClass("active");
     })
   }
   
@@ -49,9 +55,9 @@
     vm.content = "Hello, world!"
   }
   
-  CtrlGallery.$inject = ["$scope"];
-  function CtrlGallery($scope){
+  CtrlCollection.$inject = ["$scope"];
+  function CtrlCollection($scope){
     var vm = $scope;
-    vm.content = "This is a gallery."
+    vm.content = "This is a collection."
   }
 })();

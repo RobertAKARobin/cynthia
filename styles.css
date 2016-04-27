@@ -48,10 +48,10 @@ nav .menu > li a {
   transition: background-color 0.2s;
 }
 nav .menu > li:hover a, nav .menu > li.active a {
-  background-color: #2d2d2d;
+  background-color: #333;
 }
 nav .menu > li:hover a:hover, nav .menu > li.active a:hover {
-  background-color: #656565;
+  background-color: #666;
 }
 nav .menu > li .submenu {
   position: absolute;

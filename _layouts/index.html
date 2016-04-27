@@ -5,27 +5,28 @@
     <link rel="stylesheet" href="/styles.css">
     <script src="/dev/angular.min.js"></script>
     <script src="/dev/angular-ui-router.min.js"></script>
+    <script src="/dev/jquery.min.js"></script>
     <script src="/script.js"></script>
     <base href="/">
   </head>
   <body data-ng-app="app">
     <nav>
       <ul class="menu">
-        <li class="active"><a data-ui-sref="home">HOME</a></li>
-        <li><a data-ui-sref="page({title: 'galleries'})">COLLECTIONS</a>
+        <li><a data-ui-sref="home">HOME</a></li>
+        <li><a>COLLECTIONS</a>
           <ul class="submenu">
-            <li><a data-ui-sref="gallery({title: 'rings'})">RINGS</a></li>
-            <li><a data-ui-sref="gallery({title: 'accessories'})">ACCESSORIES</a></li>
-            <li><a data-ui-sref="gallery({title: 'art'})">ART OBJECTS</a></li>
+            <li><a data-state="collection">RINGS</a></li>
+            <li><a data-state="collection">ACCESSORIES</a></li>
+            <li><a data-state="collection">ART</a></li>
           </ul>
         </li>
-        <li><a data-ui-sref="page({title: 'about'})">ABOUT</a>
+        <li><a>ABOUT</a>
           <ul class="submenu">
             <li><a data-ui-sref="page({title: 'about'})">ME</a></li>
-            <li><a data-ui-sref="page({title: 'techniques'})">TECHNIQUES</a></li>
+            <li><a>TECHNIQUES</a></li>
           </ul>
         </li>
-        <li><a data-ui-sref="page({title: 'contact'})">CONTACT</a></li>
+        <li><a>CONTACT</a></li>
       </ul>
     </nav>
     <header>

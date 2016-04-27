@@ -5,6 +5,7 @@ html
     link(rel="stylesheet" href="/styles.css")
     script(src="/dev/angular.min.js")
     script(src="/dev/angular-ui-router.min.js")
+    script(src="/dev/jquery.min.js")
     script(src="/script.js")
     base(href="/")
   body(data-ng-app="app")
@@ -12,21 +13,21 @@ html
     - var a = "about"
     nav
       ul.menu
-        li.active
+        li
           a(data-ui-sref="home") HOME
         li
-          a(data-ui-sref="page({title: 'galleries'})") COLLECTIONS
+          a COLLECTIONS
           ul.submenu
-            li: a(data-ui-sref="gallery({title: 'rings'})") RINGS
-            li: a(data-ui-sref="gallery({title: 'accessories'})") ACCESSORIES
-            li: a(data-ui-sref="gallery({title: 'art'})") ART OBJECTS
+            li: a(data-state="collection") RINGS
+            li: a(data-state="collection") ACCESSORIES
+            li: a(data-state="collection") ART
         li
-          a(data-ui-sref="page({title: 'about'})") ABOUT
+          a ABOUT
           ul.submenu
             li: a(data-ui-sref="page({title: 'about'})") ME
-            li: a(data-ui-sref="page({title: 'techniques'})") TECHNIQUES
+            li: a TECHNIQUES
         li
-          a(data-ui-sref="page({title: 'contact'})") CONTACT
+          a CONTACT
     
     header
       h1 CYNTHIA CORIO - POLI
