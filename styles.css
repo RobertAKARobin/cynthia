@@ -31,31 +31,16 @@ body {
   color: #aaa;
   text-align: center;
   height: 100%;
+  box-sizing: border-box;
   padding-top: 50px;
   padding-bottom: 50px;
-  box-sizing: border-box;
 }
-
-.background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  opacity: 0.5;
-  background-size: cover;
-  background-position: center center;
-  animation: fadeInSemi 2s;
-}
-
-@keyframes fadeInSemi {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.5;
+@media (max-width: 600px) {
+  body {
+    padding-top: 0;
   }
 }
+
 nav {
   display: block;
   color: #fff;
@@ -68,40 +53,10 @@ nav {
 nav ul, nav li {
   vertical-align: top;
 }
-nav .menu {
-  width: 80%;
-  margin: 0 auto;
-  font-size: 0;
-}
-nav .menu > li {
-  display: inline-block;
-  position: relative;
-  width: 25%;
-}
-nav .menu > li a {
-  transition: background-color 0.2s;
-}
-nav .menu > li:hover a, nav .menu > li.active a {
-  background-color: #333;
-}
-nav .menu > li:hover a:hover, nav .menu > li.active a:hover {
-  background-color: #666;
-}
-nav .menu > li .submenu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transition: visibility 0.2s, opacity 0.2s;
-}
-nav .menu > li:hover .submenu {
-  visibility: visible;
-  opacity: 1;
-}
-nav .submenu > li {
-  display: block;
+@media (max-width: 600px) {
+  nav {
+    position: relative;
+  }
 }
 nav a {
   display: block;
@@ -109,6 +64,52 @@ nav a {
   font-size: 16px;
   line-height: 50px;
   width: 100%;
+  transition: background-color 0.2s;
+}
+nav li.active a,
+nav li:hover a {
+  background-color: #333;
+}
+nav li a:hover {
+  background-color: #666;
+}
+nav ul.menu {
+  background-color: #000;
+  text-align: center;
+  font-size: 0;
+}
+nav ul.menu > li {
+  position: relative;
+}
+nav ul.menu > li > ul > li {
+  display: block;
+}
+@media (max-width: 600px) {
+  nav ul.menu > li {
+    border-bottom: 1px solid #666;
+  }
+  nav ul.menu > li > a:not(:only-child) {
+    display: none;
+  }
+}
+@media (min-width: 600px) {
+  nav ul.menu > li {
+    display: inline-block;
+    width: 20%;
+  }
+  nav ul.menu > li > ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.2s, opacity 0.2s;
+  }
+  nav ul.menu > li:hover > ul {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 header {
@@ -213,6 +214,26 @@ footer {
   line-height: 200px;
 }
 
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.5;
+  background-size: cover;
+  background-position: center center;
+  animation: fadeInSemi 2s;
+}
+
+@keyframes fadeInSemi {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
 .lightbox {
   position: fixed;
   width: 100%;
