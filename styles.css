@@ -274,9 +274,15 @@ footer {
   margin: 0 auto;
   cursor: e-resize;
 }
+@media (max-width: 600px) {
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
 .lightbox .info {
   display: block;
-  padding: 10px 0;
+  padding: 10px;
   margin: 0 auto;
   text-align: left;
   font-size: 1rem;
@@ -285,7 +291,7 @@ footer {
 .lightbox .info h1 {
   color: #fff;
 }
-.lightbox .indx {
+.lightbox .info h1 .indx {
   float: right;
 }
 .lightbox .hide {
@@ -311,6 +317,12 @@ footer {
 .lightbox .prev:hover,
 .lightbox .next:hover {
   color: #fff;
+}
+@media (max-width: 600px) {
+  .lightbox .prev,
+  .lightbox .next {
+    display: none;
+  }
 }
 .lightbox .prev {
   left: 0;
