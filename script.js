@@ -42,13 +42,13 @@
       url: "/:title",
       controller: "ctrlPage",
       templateUrl: function($stateParams){
-        return("/html/" + $stateParams.title + ".html");
+        return("/pages/" + $stateParams.title + ".html");
       }
     })
     .state("collection", {
       url: "/collections/:title",
       controller: "ctrlCollection",
-      templateUrl: "/html/collection.html"
+      templateUrl: "/pages/collection.html"
     });
     $urlRouterProvider.otherwise("/");
   }
