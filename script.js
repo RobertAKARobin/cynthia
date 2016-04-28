@@ -55,7 +55,9 @@
   
   Run.$inject = ["$rootScope", "$state", "$location"];
   function Run($rootScope, $state, $location){
-    $(".menu a").each(function(i, link){
+    var $navlinks = $(".menu a");
+    var $menus = $(".menu > li");
+    $navlinks.each(function(i, link){
       if(link.href.trim() !== "") return;
       link.href = $state.href(
         (link.getAttribute("data-state") || "page"),
@@ -63,10 +65,9 @@
       );
     })
     $rootScope.$on("$stateChangeSuccess", function(){
-      $rootScope.title = $state.params.title;
-      $(".menu > li").removeClass("active");
-      $(".menu a[href='" + $location.$$path + "']")
-        .closest(".menu > li").addClass("active");
+      $rootScope.title = ($state.params.title || "home");
+      $menus.removeClass("active");
+      $navlinks.filter("[href='" + $location.$$path + "']").closest(".menu > li").addClass("active");
     })
   }
   
