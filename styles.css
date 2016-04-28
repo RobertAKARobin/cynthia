@@ -216,7 +216,7 @@ footer {
   cursor: e-resize;
 }
 .lightbox .info {
-  display: none;
+  display: block;
   padding: 10px 0;
   margin: 0 auto;
   text-align: left;

@@ -90,44 +90,33 @@
       })
     });
     var sec   = 300;
-    vm.image  = null;
+    vm.image  = {};
     vm.index  = null;
     vm.$wrap  = $("#lightbox");
     vm.$img   = vm.$wrap.find("img");
-    vm.$info  = vm.$wrap.find(".info");
-    vm.$indx  = vm.$wrap.find(".indx");
-    vm.$desc  = vm.$wrap.find(".desc");
-    vm.$title = vm.$wrap.find(".title");
-    vm.$img.on("load", function(){
-      vm.$desc.text(vm.image.description || "");
-      vm.$title.text(vm.image.title || "");
-      vm.$indx.text((vm.index + 1) + "/" + vm.images.length);
-      vm.$img.fadeIn(sec);
-      vm.$info.fadeIn(sec);
-    });
-    vm.reveal = function(){
+    vm.$frame = vm.$wrap.find(".frame");
+    angular.element(vm.$img).on("load", function(){
       vm.$wrap.fadeIn(sec);
-    }
+      vm.$frame.fadeIn(sec);
+      vm.$apply();
+    });
     vm.hide   = function(){
       vm.$wrap.fadeOut(sec);
-      vm.$img.fadeOut(sec);
     }
-    vm.goto   = function($index){
+    vm.load   = function($index){
       vm.index  = $index;
       vm.image  = vm.images[$index];
-      vm.$img.fadeOut(sec, setSource);
-      vm.$info.fadeOut(sec);
+      vm.$img.attr("src", vm.image.link);
     }
     vm.cycle  = function(change){
-      var max = vm.images.length - 1;
-      var i = vm.index;
-      i+= (change || 0);
-      if(i > max) i = 0;
-      if(i < 0) i = max;
-      vm.goto(i)
-    }
-    function setSource(){
-      vm.$img.attr("src", vm.image.link);
+      vm.$frame.fadeOut(sec, function(){
+        var max = vm.images.length - 1;
+        var i = vm.index;
+        i += (change || 0);
+        if(i > max) i = 0;
+        if(i < 0) i = max;
+        vm.load(i)
+      });
     }
   }
 })();

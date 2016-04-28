@@ -1,15 +1,15 @@
 <ul class="gallery">
   <li data-ng-if="images.length < 1" class="loading"></li>
-  <li class="image" data-ng-repeat="image in images" style="background-image:url({{image.thumb}})" data-ng-click="reveal(); goto($index);">{{image.link}}</li>
+  <li class="image" data-ng-repeat="image in images" style="background-image:url({{image.thumb}})" data-ng-click="load($index);">{{image.link}}</li>
 </ul>
 
 <div class="lightbox" id="lightbox">
   <div class="frame">
-    <img class="iamge" src="#" alt="Main image" data-ng-click="cycle(1)" />
+    <img class="image" data-ng-src="{{image.link}}" alt="Main image" data-ng-click="cycle(1)" />
     <div class="info">
-      <p class="title"></p>
-      <p class="indx"></p>
-      <p class="desc"></p>
+      <p>{{image.title}}</p>
+      <p class="indx">{{index + 1}}/{{images.length}}</p>
+      <p>{{image.description}}</p>
     </div>
   </div>
   <div class="hide" data-ng-click="hide()"></div>
