@@ -1,9 +1,8 @@
 <p>{{description}}</p>
 
 <ul class="gallery">
-  <li data-ng-repeat="image in images" style="background-image:url({{image.thumb}})" data-ng-click="reveal(); goto($index);">
-    <p>Hello</p>
-  </li>
+  <li data-ng-if="images.length < 1" class="loading"></li>
+  <li class="image" data-ng-repeat="image in images" style="background-image:url({{image.thumb}})" data-ng-click="reveal(); goto($index);">{{image.link}}</li>
 </ul>
 
 <div class="lightbox" id="lightbox">

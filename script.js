@@ -79,6 +79,7 @@
   CtrlCollection.$inject = ["$scope", "Imgur"];
   function CtrlCollection($scope, Imgur){
     var vm = $scope;
+    vm.images = [];
     Imgur.load($scope.$root.title).then(function(response){
       angular.extend(vm, response.data.data);
       vm.images.forEach(function(image){

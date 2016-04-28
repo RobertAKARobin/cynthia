@@ -147,14 +147,16 @@ footer{
   flex-direction:row;
   flex-wrap:wrap;
   justify-content:space-around;
+  align-items:stretch;
+  min-height:200px;
   
-  li{
+  .image{
     display:block;
     flex-basis:24%;
     flex-grow:1;
     background-size:cover;
     background-position:center center;
-    height:18vw;
+    height:200px;
     margin:1%;
     animation:fadeIn 1s;
     opacity:1;
@@ -163,6 +165,21 @@ footer{
     
     &:hover{
       opacity:0.8;
+    }
+  }
+  
+  .loading{
+    display:block;
+    flex-basis:100%;
+    animation:pulse 0.5s linear infinite alternate;
+    
+    &:after{
+      content:"\2026";
+      display:block;
+      margin:0 auto;
+      font-size:100px;
+      line-height:200px;
+      color:#666;
     }
   }
 }
@@ -212,6 +229,15 @@ footer{
 }
 
 @keyframes fadeIn{
+  from{
+    opacity:0;
+  }
+  to{
+    opacity:1;
+  }
+}
+
+@keyframes pulse{
   from{
     opacity:0;
   }
