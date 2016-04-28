@@ -77,8 +77,8 @@
     vm.content = "Hello, world!"
   }
   
-  CtrlCollection.$inject = ["$scope", "Imgur"];
-  function CtrlCollection($scope, Imgur){
+  CtrlCollection.$inject = ["$scope", "Imgur", "$location"];
+  function CtrlCollection($scope, Imgur, $location){
     var vm = $scope;
     vm.images = [];
     Imgur.load($scope.$root.title).then(function(response){
@@ -88,6 +88,7 @@
           return(match + "l");
         });
       })
+      if(!isNaN($location.$$hash)) vm.load($location.$$hash);
     });
     var sec   = 300;
     vm.image  = {};

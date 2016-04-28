@@ -1,7 +1,7 @@
-<ul class="gallery">
-  <li data-ng-if="images.length < 1" class="loading"></li>
-  <li class="image" data-ng-repeat="image in images" style="background-image:url({{image.thumb}})" data-ng-click="load($index);">{{image.link}}</li>
-</ul>
+<div class="gallery">
+  <div data-ng-if="images.length < 1" class="loading"></div>
+  <a class="image" data-ng-repeat="image in images" style="background-image:url({{image.thumb}})" data-ng-click="load($index);" data-ng-href="#{{$index}}">{{image.link}}</a>
+</div>
 
 <div class="lightbox" id="lightbox">
   <div class="frame">
