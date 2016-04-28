@@ -125,11 +125,10 @@ header{
   margin-bottom:50px;
   transition:margin-top 0.3s;
   
-  .home &{
-    position:absolute;
-    margin-top:40vh;
-    left:0;
-    width:100%;
+  @media #{$screen}{
+    .home &{
+      margin-top:40vh;
+    }
   }
   
   h1{
@@ -155,6 +154,11 @@ section{
   line-height:2.2em;
   box-sizing:border-box;
   background-color:rgba(0,0,0,0.7);
+  
+  @media #{$mobile}{
+    margin:0 10px;
+    padding:15px;
+  }
   
   h1{
     color:#fff;
@@ -183,21 +187,21 @@ footer{
   font-size:0;
   width:100%;
   box-sizing:border-box;
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:space-around;
-  align-items:stretch;
   min-height:200px;
+  
+  @media #{$screen}{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-around;
+    align-items:stretch;
+  }
   
   .image{
     display:block;
-    flex-basis:24%;
-    flex-grow:1;
     background-size:cover;
     background-position:center center;
     height:200px;
-    max-width:50vw;
     margin:5px;
     animation:fadeIn 1s;
     opacity:1;
@@ -207,12 +211,21 @@ footer{
     &:hover{
       opacity:0.8;
     }
+    
+    @media #{$screen}{
+      flex-basis:24%;
+      flex-grow:1;
+      max-width:50vw;
+    }
   }
   
   .loading{
     display:block;
-    flex-basis:100%;
     animation:pulse 0.5s linear infinite alternate;
+    
+    @media #{$screen}{
+      flex-basis:100%;
+    }
     
     &:after{
       content:"\2026";
