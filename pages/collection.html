@@ -1,15 +1,17 @@
-<p>{{description}}</p>
-
 <ul class="gallery">
   <li data-ng-if="images.length < 1" class="loading"></li>
   <li class="image" data-ng-repeat="image in images" style="background-image:url({{image.thumb}})" data-ng-click="reveal(); goto($index);">{{image.link}}</li>
 </ul>
 
 <div class="lightbox" id="lightbox">
-  <img data-ng-src="{{targetImageLink}}" alt="{{targetImageLink}}" />
-  <div class="controls">
-    <div class="prev" data-ng-click="cycle(-1)">&lsaquo;</div>
-    <div class="hide" data-ng-click="hide()">&times;</div>
-    <div class="next" data-ng-click="cycle(1)">&rsaquo;</div>
+  <div class="frame">
+    <img class="iamge" src="#" alt="Main image" data-ng-click="cycle(1)" />
+    <div class="info">
+      <p class="indx"></p>
+      <p class="desc"></p>
+    </div>
   </div>
+  <div class="hide" data-ng-click="hide()"></div>
+  <div class="prev" data-ng-click="cycle(-1)">&lang;</div>
+  <div class="next" data-ng-click="cycle(1)">&rang;</div>
 </div>

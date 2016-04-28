@@ -93,8 +93,14 @@
     vm.index  = null;
     vm.$wrap  = $("#lightbox");
     vm.$img   = vm.$wrap.find("img");
+    vm.$info  = vm.$wrap.find(".info");
+    vm.$indx  = vm.$wrap.find(".indx");
+    vm.$desc  = vm.$wrap.find(".desc");
     vm.$img.on("load", function(){
+      vm.$desc.text(vm.image.description || "");
+      vm.$indx.text((vm.index + 1) + "/" + vm.images.length);
       vm.$img.fadeIn(sec);
+      vm.$info.fadeIn(sec);
     });
     vm.reveal = function(){
       vm.$wrap.fadeIn(sec);
@@ -107,6 +113,7 @@
       vm.index  = $index;
       vm.image  = vm.images[$index];
       vm.$img.fadeOut(sec, setSource);
+      vm.$info.fadeOut(sec);
     }
     vm.cycle  = function(change){
       var max = vm.images.length - 1;

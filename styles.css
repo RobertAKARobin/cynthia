@@ -143,7 +143,8 @@ footer {
   background-size: cover;
   background-position: center center;
   height: 200px;
-  margin: 1%;
+  max-width: 50vw;
+  margin: 5px;
   animation: fadeIn 1s;
   opacity: 1;
   transition: opacity 0.2s;
@@ -168,42 +169,70 @@ footer {
 
 .lightbox {
   position: fixed;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
   display: none;
+  text-align: center;
+}
+.lightbox .frame {
+  position: relative;
+  display: inline-block;
+  margin-top: 10vh;
 }
 .lightbox img {
   display: block;
-  position: relative;
-  margin: 20vh auto 0 auto;
-  max-width: 80vw;
-  max-height: 60vh;
-  width: auto;
+  max-height: 80vh;
   height: auto;
+  max-width: 80vw;
+  width: auto;
+  margin: 0 auto;
+  cursor: e-resize;
 }
-.lightbox .controls {
+.lightbox .info {
+  display: none;
+  padding: 10px 0;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1rem;
+  color: #ccc;
+}
+.lightbox .indx {
+  float: right;
+}
+.lightbox .hide {
   position: absolute;
-  bottom: 8vh;
-  left: 0;
   width: 100%;
-  text-align: center;
+  height: 100%;
+  top: 0;
+  left: 0;
+  cursor: zoom-out;
+  background-color: rgba(0, 0, 0, 0.7);
 }
-.lightbox .controls div {
-  display: inline-block;
-  vertical-align: top;
-  line-height: 10vh;
-  font-size: 42px;
+.lightbox .prev,
+.lightbox .next {
+  position: absolute;
+  top: 50vh;
+  font-size: 60px;
+  line-height: 60px;
+  margin-top: -50px;
+  padding: 20px;
   color: #999;
-  font-weight: bold;
-  min-width: 100px;
   transition: color 0.3s;
   cursor: pointer;
 }
-.lightbox .controls div:hover {
+.lightbox .prev:hover,
+.lightbox .next:hover {
   color: #fff;
+}
+.lightbox .prev {
+  left: 0;
+  cursor: w-resize;
+}
+.lightbox .next {
+  right: 0;
+  cursor: e-resize;
 }
 
 @keyframes fadeIn {
@@ -223,17 +252,19 @@ footer {
   }
 }
 nav {
-  z-index: 9996;
+  z-index: 9980;
 }
 
 .lightbox {
-  z-index: 9997;
+  z-index: 9990;
 }
-
-.lightbox .trigger {
-  z-index: 9998;
+.lightbox .hide {
+  z-index: 9991;
 }
-
-.lightbox img {
-  z-index: 9999;
+.lightbox .frame {
+  z-index: 9992;
+}
+.lightbox .next,
+.lightbox .prev {
+  z-index: 9994;
 }
