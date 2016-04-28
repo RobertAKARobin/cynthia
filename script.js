@@ -79,13 +79,44 @@
   CtrlCollection.$inject = ["$scope", "Imgur"];
   function CtrlCollection($scope, Imgur){
     var vm = $scope;
-    Imgur.load("rings").then(function(response){
-      response.data.data.images.forEach(function(image){
+    Imgur.load($scope.$root.title).then(function(response){
+      angular.extend(vm, response.data.data);
+      vm.images.forEach(function(image){
         image.thumb = image.link.replace(image.id, function(match){
           return(match + "l");
         });
-      });
-      angular.extend(vm, response.data.data);
+      })
     });
+    var sec   = 300;
+    vm.image  = null;
+    vm.index  = null;
+    vm.$wrap  = $("#lightbox");
+    vm.$img   = vm.$wrap.find("img");
+    vm.$img.on("load", function(){
+      vm.$img.fadeIn(sec);
+    });
+    vm.reveal = function(){
+      vm.$wrap.fadeIn(sec);
+    }
+    vm.hide   = function(){
+      vm.$wrap.fadeOut(sec);
+      vm.$img.fadeOut(sec);
+    }
+    vm.goto   = function($index){
+      vm.index  = $index;
+      vm.image  = vm.images[$index];
+      vm.$img.fadeOut(sec, setSource);
+    }
+    vm.cycle  = function(change){
+      var max = vm.images.length - 1;
+      var i = vm.index;
+      i+= (change || 0);
+      if(i > max) i = 0;
+      if(i < 0) i = max;
+      vm.goto(i)
+    }
+    function setSource(){
+      vm.$img.attr("src", vm.image.link);
+    }
   }
 })();

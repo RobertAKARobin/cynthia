@@ -43,7 +43,6 @@ nav{
   top:0;
   left:0;
   width:100%;
-  z-index:9999;
   ul, li{
     vertical-align:top;
   }
@@ -168,6 +167,50 @@ footer{
   }
 }
 
+.lightbox{
+  position:fixed;
+  width:100vw;
+  height:100vh;
+  top:0;
+  left:0;
+  background-color:rgba(0,0,0,0.7);
+  display:none;
+  
+  img{
+    display:block;
+    position:relative;
+    margin:20vh auto 0 auto;
+    max-width:80vw;
+    max-height:60vh;
+    width:auto;
+    height:auto;
+  }
+  
+  .controls{
+    position:absolute;
+    bottom:8vh;
+    left:0;
+    width:100%;
+    text-align:center;
+    
+    div{
+      display:inline-block;
+      vertical-align:top;
+      line-height:10vh;
+      font-size:42px;
+      color:#999;
+      font-weight:bold;
+      min-width:100px;
+      transition:color 0.3s;
+      cursor:pointer;
+      
+      &:hover{
+        color:#fff;
+      }
+    }
+  }
+}
+
 @keyframes fadeIn{
   from{
     opacity:0;
@@ -175,4 +218,17 @@ footer{
   to{
     opacity:1;
   }
+}
+
+nav{
+  z-index:9996;
+}
+.lightbox{
+  z-index:9997;
+}
+.lightbox .trigger{
+  z-index:9998;
+}
+.lightbox img{
+  z-index:9999;
 }
