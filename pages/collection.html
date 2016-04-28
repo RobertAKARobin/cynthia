@@ -7,8 +7,7 @@
   <div class="frame">
     <img class="image" data-ng-src="{{image.link}}" alt="Main image" data-ng-click="cycle(1)" />
     <div class="info">
-      <p>{{image.title}}</p>
-      <p class="indx">{{index + 1}}/{{images.length}}</p>
+      <h1>{{image.title}} <span class="indx">{{index + 1}}/{{images.length}}</span></h1>
       <p>{{image.description}}</p>
     </div>
   </div>
