@@ -97,8 +97,10 @@
     vm.$info  = vm.$wrap.find(".info");
     vm.$indx  = vm.$wrap.find(".indx");
     vm.$desc  = vm.$wrap.find(".desc");
+    vm.$title = vm.$wrap.find(".title");
     vm.$img.on("load", function(){
       vm.$desc.text(vm.image.description || "");
+      vm.$title.text(vm.image.title || "");
       vm.$indx.text((vm.index + 1) + "/" + vm.images.length);
       vm.$img.fadeIn(sec);
       vm.$info.fadeIn(sec);
