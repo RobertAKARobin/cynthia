@@ -1,6 +1,8 @@
 <div class="gallery">
   <div data-ng-if="images.length < 1" class="loading"></div>
-  <a class="image" data-ng-repeat="image in images" style="background-image:url({{image.thumb}})" data-ng-click="load($index);" data-ng-href="#{{$index}}">{{image.link}}</a>
+  <a class="imageLink" data-ng-repeat="image in images" data-ng-click="load($index);" data-ng-href="#{{$index}}">
+    <img class="notloaded" data-ng-src="{{image.thumb}}" alt="{{image.description}}" onload="this.classList.remove('notloaded')" />
+  </a>
 </div>
 
 <div class="lightbox" id="lightbox">

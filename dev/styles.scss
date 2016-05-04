@@ -234,18 +234,29 @@ footer{
     -webkit-align-items:stretch;
   }
   
-  .image{
+  .imageLink{
     display:block;
-    background-size:cover;
-    background-position:center center;
+    position:relative;
     height:200px;
     margin:5px;
-    animation:fadeIn 1s;
-    opacity:1;
-    transition:opacity 0.2s;
     cursor:pointer;
+    overflow:hidden;
     
-    &:hover{
+    img{
+      display:block;
+      position:absolute;
+      top:50%;
+      transform: translate(0, -50%);
+      width:100%;
+      opacity:1;
+      transition:opacity 0.2s;
+      -webkit-backface-visibility: hidden;
+      
+      &.notloaded{
+        opacity:0;
+      }
+    }
+    &:hover img{
       opacity:0.8;
     }
     
