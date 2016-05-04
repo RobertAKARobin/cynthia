@@ -18,6 +18,11 @@ $screen: "(min-width:600px)";
   font-style:italic;
 }
 @font-face{
+  font-family:"Open Sans";
+  src:url("fonts/OpenSans-Light.ttf");
+  font-weight:100;
+}
+@font-face{
   font-family:"Viner Hand";
   src:url("fonts/VinerHandITC.ttf");
 }
@@ -80,8 +85,10 @@ nav{
   
   a{
     display:block;
-    font-weight:bold;
-    font-size:16px;
+    font-size:12px;
+    font-weight:100;
+    letter-spacing:3px;
+    color:#ccc;
     line-height:$nav-height;
     width:100%;
     transition: background-color 0.2s;
@@ -155,10 +162,8 @@ header{
     font-weight:bold;
     letter-spacing:-2px;
     font-family:"Viner Hand";
-    color:#ddd;
-    text-shadow:-1px 1px 0 #777,
-                -2px 2px 0 #333,
-                1px -1px 0 #fff;
+    color:#fff;
+    text-shadow:-1px 1px 0 #000;
     
     & + p{
       letter-spacing:3px;
