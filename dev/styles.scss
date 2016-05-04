@@ -89,9 +89,13 @@ nav{
     font-weight:100;
     letter-spacing:3px;
     color:#ccc;
-    line-height:$nav-height;
+    line-height:2em;
     width:100%;
     transition: background-color 0.2s;
+    
+    @media #{$screen}{
+      line-height:$nav-height;
+    }
   }
   li.active a,
   li:hover a{

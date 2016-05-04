@@ -87,9 +87,14 @@ nav a {
   font-weight: 100;
   letter-spacing: 3px;
   color: #ccc;
-  line-height: 50px;
+  line-height: 2em;
   width: 100%;
   transition: background-color 0.2s;
+}
+@media (min-width: 600px) {
+  nav a {
+    line-height: 50px;
+  }
 }
 nav li.active a,
 nav li:hover a {
