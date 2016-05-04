@@ -56,7 +56,6 @@ body {
   height: 100%;
   box-sizing: border-box;
   padding-top: 50px;
-  padding-bottom: 50px;
 }
 @media (max-width: 600px) {
   body {
@@ -200,7 +199,7 @@ section pre {
 }
 
 footer {
-  display: block;
+  display: none;
   position: absolute;
   left: 0;
   bottom: 0;

@@ -60,7 +60,7 @@ body{
   height:100%;
   box-sizing:border-box;
   padding-top:$nav-height;
-  padding-bottom:$foot-height;
+  // padding-bottom:$foot-height;
 
   @media #{$mobile}{
     padding-top:0;
@@ -206,7 +206,7 @@ section{
   }
 }
 footer{
-  display:block;
+  display:none;
   position:absolute;
   left:0;
   bottom:0;
