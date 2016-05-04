@@ -211,10 +211,15 @@ footer{
   
   @media #{$screen}{
     display:flex;
+    display:-webkit-flex;
     flex-direction:row;
+    -webkit-flex-direction:row;
     flex-wrap:wrap;
+    -webkit-flex-wrap:wrap;
     justify-content:space-around;
+    -webkit-justify-content:space-around;
     align-items:stretch;
+    -webkit-align-items:stretch;
   }
   
   .image{
@@ -234,7 +239,9 @@ footer{
     
     @media #{$screen}{
       flex-basis:24%;
+      -webkit-flex-basis:24%;
       flex-grow:1;
+      -webkit-flex-grow:1;
       max-width:50vw;
     }
   }
@@ -245,6 +252,7 @@ footer{
     
     @media #{$screen}{
       flex-basis:100%;
+      -webkit-flex-basis:100%;
     }
     
     &:after{
