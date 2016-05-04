@@ -3,6 +3,25 @@ $foot-height: 50px;
 $mobile: "(max-width:600px)";
 $screen: "(min-width:600px)";
 
+@font-face{
+  font-family:"Open Sans";
+  src:url("fonts/OpenSans-Regular.ttf");
+}
+@font-face{
+  font-family:"Open Sans";
+  src:url("fonts/OpenSans-Bold.ttf");
+  font-weight:bold;
+}
+@font-face{
+  font-family:"Open Sans";
+  src:url("fonts/OpenSans-Italic.ttf");
+  font-style:italic;
+}
+@font-face{
+  font-family:"Viner Hand";
+  src:url("fonts/VinerHandITC.ttf");
+}
+
 *{
   margin:0;
   border:0;
@@ -135,6 +154,7 @@ header{
     font-size:42px;
     font-weight:bold;
     letter-spacing:-2px;
+    font-family:"Viner Hand";
     color:#fff;
     
     & + p{
