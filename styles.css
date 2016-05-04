@@ -240,11 +240,13 @@ footer {
 }
 @media (min-width: 600px) {
   .gallery .image {
-    flex-basis: 24%;
-    -webkit-flex-basis: 24%;
+    flex-basis: 30%;
+    -webkit-flex-basis: 30%;
     flex-grow: 1;
     -webkit-flex-grow: 1;
+    flex-shrink: 0;
     max-width: 50vw;
+    min-width: 250px;
   }
 }
 .gallery .loading {
