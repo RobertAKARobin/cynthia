@@ -88,7 +88,9 @@
           return(match + "l");
         });
       })
-      if(!isNaN($location.$$hash)) vm.load($location.$$hash);
+      if($location.$$hash && !isNaN($location.$$hash)){
+        vm.load($location.$$hash);
+      }
     });
     var sec   = 300;
     vm.image  = {};
@@ -102,6 +104,7 @@
       vm.$apply();
     });
     vm.hide   = function(){
+      $location.hash("");
       vm.$wrap.fadeOut(sec);
     }
     vm.load   = function($index){
