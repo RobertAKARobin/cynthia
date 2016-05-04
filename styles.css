@@ -120,13 +120,12 @@ nav ul.menu > li > ul > li {
     top: 0;
     left: 0;
     width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transition: visibility 0.2s, opacity 0.2s;
   }
-  nav ul.menu > li:hover > ul {
-    visibility: visible;
-    opacity: 1;
+  nav ul.menu > li > ul a {
+    display: none;
+  }
+  nav ul.menu > li:hover > ul a, nav ul.menu > li > ul a.active {
+    display: block;
   }
 }
 

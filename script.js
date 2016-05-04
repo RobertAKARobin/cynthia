@@ -65,9 +65,11 @@
       );
     })
     $rootScope.$on("$stateChangeSuccess", function(){
+      var $navlink = $navlinks.filter("[href='" + $location.$$path + "']");
       $rootScope.title = ($state.params.title || "home");
-      $menus.removeClass("active");
-      $navlinks.filter("[href='" + $location.$$path + "']").closest(".menu > li").addClass("active");
+      $(".active").removeClass("active");
+      $navlink.addClass("active");
+      $navlink.closest(".menu > li").addClass("active");
     })
   }
   

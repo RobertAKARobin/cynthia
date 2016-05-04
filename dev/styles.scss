@@ -125,13 +125,13 @@ nav{
         top:0;
         left:0;
         width:100%;
-        opacity:0;
-        visibility:hidden;
-        transition:visibility 0.2s, opacity 0.2s;
       }
-      & > li:hover > ul{
-        visibility:visible;
-        opacity:1;
+      & > li > ul a{
+        display:none;
+      }
+      & > li:hover > ul a,
+      & > li > ul a.active{
+        display:block;
       }
     }
   }
