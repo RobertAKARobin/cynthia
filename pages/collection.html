@@ -1,19 +1,20 @@
 <div class="gallery">
   <div data-ng-if="images.length < 1" class="loading"></div>
-  <a class="imageLink" data-ng-repeat="image in images" data-ng-click="load($index);" data-ng-href="#{{$index}}">
-    <img class="notloaded" data-ng-src="{{image.thumb}}" alt="{{image.description}}" onload="this.classList.remove('notloaded')" />
+  <a class="imageLink notloaded" data-ng-repeat="image in images" data-ng-click="cycle($index)" data-ng-href="#{{$index}}" style="background-image:url({{image.thumb}})">
+    <img data-ng-src="{{image.thumb}}" alt="{{image.description}}" onload="this.parentElement.classList.remove('notloaded')" />
   </a>
 </div>
 
-<div class="lightbox" id="lightbox">
+<div class="lightbox">
+  <img class="secretLoader" />
   <div class="frame">
-    <img class="image" data-ng-src="{{image.link}}" alt="Main image" data-ng-click="cycle(1)" />
+    <img class="image" alt="Main image" data-ng-click="cycle(1)" />
     <div class="info">
       <h1>{{image.title}} <span class="indx">{{index + 1}}/{{images.length}}</span></h1>
       <p>{{image.description}}</p>
     </div>
   </div>
   <div class="hide" data-ng-click="hide()"></div>
-  <div class="prev" data-ng-click="cycle(-1)">&lang;</div>
-  <div class="next" data-ng-click="cycle(1)">&rang;</div>
+  <div class="prev" data-ng-click="cycle('-')">&lang;</div>
+  <div class="next" data-ng-click="cycle('+')">&rang;</div>
 </div>

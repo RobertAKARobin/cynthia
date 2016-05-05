@@ -81,47 +81,64 @@
   
   CtrlCollection.$inject = ["$scope", "Imgur", "$location"];
   function CtrlCollection($scope, Imgur, $location){
-    var vm = $scope;
+    var vm  = $scope;
+    var sec = 300;
     vm.images = [];
+    vm.image  = {};
+    vm.index  = null;
+    vm.wrap   = document.querySelector(".lightbox");
+    vm.img    = vm.wrap.querySelector(".image");
+    vm.loader = vm.wrap.querySelector(".secretLoader");
+    vm.frame  = vm.wrap.querySelector(".frame");
+    vm.cycle  = function(goto){
+      var newindex = vm.index, newimg;
+      var isHidden = false, isLoaded = false;
+      var reveal = function(){
+        if(!isHidden) return;
+        else if(isHidden && !isLoaded) vm.img.src = newimg.thumb;
+        else if(isHidden && isLoaded) vm.img.src = newimg.full;
+      }
+      var listenerIsLoaded = function(){
+        isLoaded = true;
+        vm.loader.removeEventListener("load", listenerIsLoaded);
+        reveal();
+      }
+      if(goto === "+") newindex += 1;
+      else if(goto === "-") newindex -= 1;
+      else newindex = goto;
+      if(newindex >= vm.images.length) newindex = 0;
+      if(newindex < 0) newindex = vm.images.length - 1;
+      newimg = vm.images[newindex];
+      vm.loader.src = newimg.full;
+      vm.loader.addEventListener("load", listenerIsLoaded);
+      $(vm.frame).fadeOut(sec, function(){
+        isHidden    = true;
+        vm.index    = newindex;
+        vm.image    = newimg;
+        $(vm.wrap).fadeIn(sec);
+        $(vm.frame).fadeIn(sec);
+        reveal();
+        $scope.$apply();
+      });
+    }
+    vm.hide   = function(){
+      $(vm.wrap).fadeOut(sec);
+      $location.hash("");
+    }
+    
     Imgur.load($scope.$root.title).then(function(response){
       angular.extend(vm, response.data.data);
       vm.images.forEach(function(image){
-        image.thumb = image.link.replace(image.id, function(match){
-          return(match + "l");
-        });
-      })
-      if($location.$$hash && !isNaN($location.$$hash)){
-        vm.load($location.$$hash);
+        image.thumb = getSize(image, "l");
+        image.full  = getSize(image, "h");
+      });
+      if($location.$$hash !== "" && !isNaN($location.$$hash)){
+        vm.cycle(parseInt($location.$$hash));
       }
     });
-    var sec   = 300;
-    vm.image  = {};
-    vm.index  = null;
-    vm.$wrap  = $("#lightbox");
-    vm.$img   = vm.$wrap.find("img");
-    vm.$frame = vm.$wrap.find(".frame");
-    angular.element(vm.$img).on("load", function(){
-      vm.$wrap.fadeIn(sec);
-      vm.$frame.fadeIn(sec);
-      vm.$apply();
-    });
-    vm.hide   = function(){
-      $location.hash("");
-      vm.$wrap.fadeOut(sec);
-    }
-    vm.load   = function($index){
-      vm.index  = $index;
-      vm.image  = vm.images[$index];
-      vm.$img.attr("src", vm.image.link);
-    }
-    vm.cycle  = function(change){
-      vm.$frame.fadeOut(sec, function(){
-        var max = vm.images.length - 1;
-        var i = vm.index;
-        i += (change || 0);
-        if(i > max) i = 0;
-        if(i < 0) i = max;
-        vm.load(i)
+    function getSize(image, suffix){
+      return image.link.replace(image.id, function(match){
+        return(match + suffix);
       });
     }
   }
