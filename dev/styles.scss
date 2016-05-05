@@ -154,10 +154,12 @@ header{
   margin-top:50px;
   margin-bottom:50px;
   transition:margin-top 0.3s;
+  font-family:"Viner Hand";
+  color:#fff;
   
   @media #{$screen}{
     .home &{
-      margin-top:40vh;
+      margin-top:60vh;
     }
   }
   
@@ -165,8 +167,6 @@ header{
     font-size:42px;
     font-weight:bold;
     letter-spacing:-2px;
-    font-family:"Viner Hand";
-    color:#fff;
     text-shadow:-1px 1px 0 #000;
     
     & + p{
@@ -297,7 +297,6 @@ footer{
   left:0;
   width:100vw;
   height:100vh;
-  opacity:0.5;
   background-size:cover;
   background-position:center center;
   animation:fadeInSemi 2s;
