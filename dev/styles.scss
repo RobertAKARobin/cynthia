@@ -304,7 +304,7 @@ footer{
     opacity:0;
   }
   to{
-    opacity:0.5;
+    opacity:1;
   }
 }
 
@@ -334,7 +334,7 @@ footer{
   img{
     display:block;
     max-width:640px;
-    max-height:640px;
+    max-height:80vh;
     width:auto;
     height:auto;
     margin:0 auto;

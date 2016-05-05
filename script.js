@@ -109,6 +109,7 @@
       if(newindex >= vm.images.length) newindex = 0;
       if(newindex < 0) newindex = vm.images.length - 1;
       newimg = vm.images[newindex];
+      $location.hash(newindex);
       vm.loader.src = newimg.full;
       vm.loader.addEventListener("load", listenerIsLoaded);
       $(vm.frame).fadeOut(sec, function(){
