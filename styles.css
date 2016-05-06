@@ -195,6 +195,14 @@ section h2 {
 section pre {
   white-space: pre-wrap;
 }
+section p {
+  margin: 2em 0;
+  text-align: justify;
+}
+section p img {
+  display: block;
+  width: 100%;
+}
 
 footer {
   display: none;

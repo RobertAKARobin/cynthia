@@ -201,6 +201,15 @@ section{
   pre{
     white-space: pre-wrap;
   }
+  p{
+    margin:2em 0;
+    text-align:justify;
+    
+    img{
+      display:block;
+      width:100%;
+    }
+  }
 }
 footer{
   display:none;
