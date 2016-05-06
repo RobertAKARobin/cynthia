@@ -102,38 +102,38 @@ nav li:hover a {
 nav li a:hover {
   background-color: #666;
 }
-nav ul.menu {
+nav ul.navbar {
   background-color: #000;
   text-align: center;
   font-size: 0;
 }
-nav ul.menu > li {
+nav ul.navbar > li {
   position: relative;
 }
-nav ul.menu > li > ul > li {
+nav ul.navbar > li > ul > li {
   display: block;
 }
 @media (max-width: 600px) {
-  nav ul.menu > li {
+  nav ul.navbar > li {
     border-bottom: 1px solid #666;
   }
-  nav ul.menu > li > a:not(:only-child) {
+  nav ul.navbar > li > a:not(:only-child) {
     display: none;
   }
 }
 @media (min-width: 600px) {
-  nav ul.menu > li {
+  nav ul.navbar > li {
     display: inline-block;
     width: 20%;
   }
-  nav ul.menu > li > ul {
+  nav ul.navbar > li > ul {
     display: none;
     position: absolute;
     top: 50px;
     left: 0;
     width: 100%;
   }
-  nav ul.menu > li:hover > ul {
+  nav ul.navbar > li:hover > ul {
     display: block;
   }
 }
@@ -304,7 +304,7 @@ footer {
   min-height: 100vh;
   top: 0;
   left: 0;
-  display: none;
+  display: block;
   text-align: center;
 }
 .lightbox .secretLoader {
@@ -315,12 +315,12 @@ footer {
   opacity: 0.01;
   overflow: hidden;
 }
-.lightbox .frame {
-  position: relative;
+.lightbox .slide {
   display: inline-block;
+  position: relative;
   margin-top: 10vh;
 }
-.lightbox img {
+.lightbox .slide .image {
   display: block;
   max-width: 640px;
   max-height: 80vh;
@@ -330,12 +330,12 @@ footer {
   cursor: e-resize;
 }
 @media (max-width: 600px) {
-  .lightbox img {
+  .lightbox .slide .image {
     max-width: 100%;
     max-height: 100%;
   }
 }
-.lightbox .info {
+.lightbox .slide .info {
   display: block;
   padding: 10px;
   margin: 0 auto;
@@ -343,10 +343,10 @@ footer {
   font-size: 1rem;
   background-color: rgba(0, 0, 0, 0.7);
 }
-.lightbox .info h1 {
+.lightbox .slide .info h1 {
   color: #fff;
 }
-.lightbox .info h1 .indx {
+.lightbox .slide .info h1 .indx {
   float: right;
 }
 .lightbox .hide {
@@ -418,7 +418,7 @@ nav {
 .lightbox .hide {
   z-index: 9991;
 }
-.lightbox .frame {
+.lightbox .slide {
   z-index: 9992;
 }
 .lightbox .next,

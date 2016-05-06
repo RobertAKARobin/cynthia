@@ -55,9 +55,10 @@
   
   Run.$inject = ["$rootScope", "$state", "$location"];
   function Run($rootScope, $state, $location){
-    var $navlinks = $(".menu a");
-    var $menus = $(".menu > li");
-    $navlinks.each(function(i, link){
+    var navbar    = document.querySelector(".navbar");
+    var navlinks  = navbar.querySelectorAll("a");
+    var menus     = document.querySelectorAll(".navbar > li");
+    angular.forEach(navlinks, function(link){
       if(link.href.trim() !== "") return;
       link.href = $state.href(
         (link.getAttribute("data-state") || "page"),
@@ -65,11 +66,16 @@
       );
     })
     $rootScope.$on("$stateChangeSuccess", function(){
-      var $navlink = $navlinks.filter("[href='" + $location.$$path + "']");
+      var navlink = navbar.querySelector("[href='" + $location.$$path + "']");
+      var menu    = navlink.parentElement;
+      if(!menu.parentElement.classList.contains("navbar")){
+        menu      = menu.parentElement.parentElement;
+      }
       $rootScope.title = ($state.params.title || "home");
-      $(".active").removeClass("active");
-      $navlink.addClass("active");
-      $navlink.closest(".menu > li").addClass("active");
+      angular.forEach(navbar.querySelectorAll(".active"), function(el){
+        el.classList.remove("active");
+      });
+      menu.classList.add("active");
     })
   }
   
@@ -81,26 +87,26 @@
   
   CtrlCollection.$inject = ["$scope", "Imgur", "$location"];
   function CtrlCollection($scope, Imgur, $location){
-    var vm  = $scope;
-    var sec = 300;
+    var vm    = $scope;
+    var box   = document.querySelector(".lightbox");
+    var img   = box.querySelector(".image");
+    var loader= box.querySelector(".secretLoader");
+    var slide = box.querySelector(".slide");
+    box.style.opacity = 0;
     vm.images = [];
     vm.image  = {};
     vm.index  = null;
-    vm.wrap   = document.querySelector(".lightbox");
-    vm.img    = vm.wrap.querySelector(".image");
-    vm.loader = vm.wrap.querySelector(".secretLoader");
-    vm.frame  = vm.wrap.querySelector(".frame");
     vm.cycle  = function(goto){
       var newindex = vm.index, newimg;
       var isHidden = false, isLoaded = false;
       var reveal = function(){
         if(!isHidden) return;
-        else if(isHidden && !isLoaded) vm.img.src = newimg.thumb;
-        else if(isHidden && isLoaded) vm.img.src = newimg.full;
+        else if(isHidden && !isLoaded) img.src = newimg.thumb;
+        else if(isHidden && isLoaded) img.src = newimg.full;
       }
       var listenerIsLoaded = function(){
         isLoaded = true;
-        vm.loader.removeEventListener("load", listenerIsLoaded);
+        loader.removeEventListener("load", listenerIsLoaded);
         reveal();
       }
       if(goto === "+") newindex += 1;
@@ -110,20 +116,20 @@
       if(newindex < 0) newindex = vm.images.length - 1;
       newimg = vm.images[newindex];
       $location.hash(newindex);
-      vm.loader.src = newimg.full;
-      vm.loader.addEventListener("load", listenerIsLoaded);
-      $(vm.frame).fadeOut(sec, function(){
+      loader.src = newimg.full;
+      loader.addEventListener("load", listenerIsLoaded);
+      fadeOut(slide, function(){
         isHidden    = true;
         vm.index    = newindex;
         vm.image    = newimg;
-        $(vm.wrap).fadeIn(sec);
-        $(vm.frame).fadeIn(sec);
+        fadeIn(box);
+        fadeIn(slide);
         reveal();
         $scope.$apply();
       });
     }
     vm.hide   = function(){
-      $(vm.wrap).fadeOut(sec);
+      fadeOut(box);
       $location.hash("");
     }
     
@@ -141,6 +147,35 @@
       return image.link.replace(image.id, function(match){
         return(match + suffix);
       });
+    }
+    function fadeOut(el, callback){
+      var opacity = parseFloat(el.style.opacity || window.getComputedStyle(el).opacity);
+      var timer   = setInterval(function(){
+        if(opacity >= 0){
+          opacity = opacity - 0.05;
+          el.style.opacity = opacity;
+        }else{
+          clearInterval(timer);
+          el.style.display = "none";
+          if(callback) callback();
+        }
+      }, 15);
+    }
+    function fadeIn(el, callback){
+      el.style.display = "";
+      var opacity = (el.style.opacity || window.getComputedStyle(el).opacity);
+      console.log(el.classList + " " + opacity)
+      opacity = parseFloat(opacity)
+      console.log(el.classList + " " + opacity)
+      var timer   = setInterval(function(){
+        if(opacity <= 1){
+          opacity = opacity + 0.05;
+          el.style.opacity = opacity;
+        }else{
+          clearInterval(timer);
+          if(callback) callback();
+        }
+      }, 15);
     }
   }
 })();

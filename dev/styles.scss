@@ -105,7 +105,7 @@ nav{
     background-color:#666;
   }
 
-  ul.menu{
+  ul.navbar{
     background-color:#000;
     text-align:center;
     font-size:0;
@@ -311,7 +311,7 @@ footer{
   min-height:100vh;
   top:0;
   left:0;
-  display:none;
+  display:block;
   text-align:center;
   
   .secretLoader{
@@ -322,39 +322,39 @@ footer{
     opacity:0.01;
     overflow:hidden;
   }
-  .frame{
-    position:relative;
+  .slide{
     display:inline-block;
+    position:relative;
     margin-top:10vh;
-  }
-  
-  img{
-    display:block;
-    max-width:640px;
-    max-height:80vh;
-    width:auto;
-    height:auto;
-    margin:0 auto;
-    cursor:e-resize;
     
-    @media #{$mobile}{
-      max-width:100%;
-      max-height:100%;
+    .image{
+      display:block;
+      max-width:640px;
+      max-height:80vh;
+      width:auto;
+      height:auto;
+      margin:0 auto;
+      cursor:e-resize;
+      
+      @media #{$mobile}{
+        max-width:100%;
+        max-height:100%;
+      }
     }
-  }
-  
-  .info{
-    display:block;
-    padding:10px;
-    margin:0 auto;
-    text-align:left;
-    font-size:1rem;
-    background-color:rgba(0,0,0,0.7);
     
-    h1{
-      color:#fff;
-      .indx{
-        float:right;
+    .info{
+      display:block;
+      padding:10px;
+      margin:0 auto;
+      text-align:left;
+      font-size:1rem;
+      background-color:rgba(0,0,0,0.7);
+      
+      h1{
+        color:#fff;
+        .indx{
+          float:right;
+        }
       }
     }
   }
@@ -368,7 +368,6 @@ footer{
     cursor:zoom-out;
     background-color:rgba(0,0,0,0.7);
   }
-  
   .prev,
   .next{
     position:absolute;
@@ -428,7 +427,7 @@ nav{
   .hide{
     z-index:9991;
   }
-  .frame{
+  .slide{
     z-index:9992;
   }
   .next,

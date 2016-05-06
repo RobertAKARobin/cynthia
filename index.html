@@ -9,7 +9,7 @@
   <body data-ng-app="app" data-ng-class="title">
     <div style="background-image:url(http://i.imgur.com/P38vmWb.jpg)" class="background"></div>
     <nav>
-      <ul class="menu">
+      <ul class="navbar">
         <li><a data-ui-sref="home">HOME</a></li>
         <li><a href="#">COLLECTIONS</a>
           <ul class="submenu">
@@ -45,10 +45,6 @@
         [
           "/dev/angular-ui-router.min.js",
           "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"
-        ],
-        [
-          "/dev/jquery.min.js",
-          "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"
         ]
       ].forEach(function(script){
         var src = script[1];
