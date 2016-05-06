@@ -16,7 +16,7 @@
     var Imgur = {};
     var albums = {
       "rings": "g1xta",
-      "art": "k1KwU",
+      "artobjects": "k1KwU",
       "accessories": "Da9IB",
       "misc": "CUS9u"
     }
@@ -61,7 +61,7 @@
       if(link.href.trim() !== "") return;
       link.href = $state.href(
         (link.getAttribute("data-state") || "page"),
-        {title: link.textContent.trim().toLowerCase()}
+        {title: link.textContent.trim().replace(/ /g, "").toLowerCase()}
       );
     })
     $rootScope.$on("$stateChangeSuccess", function(){
