@@ -4,10 +4,6 @@
     <title>Cynthia Corio-Poli, Design</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <script src="/dev/angular.min.js"></script>
-    <script src="/dev/angular-ui-router.min.js"></script>
-    <script src="/dev/jquery.min.js"></script>
-    <script src="/script.js"></script>
     <base href="/">
   </head>
   <body data-ng-app="app" data-ng-class="title">
@@ -39,5 +35,27 @@
     <footer>
       <p>&copy; CYNTHIA CORIO-POLI, 2016</p>
     </footer>
+    
+    <script>
+      [
+        [
+          "/dev/angular.min.js",
+          "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"
+        ],
+        [
+          "/dev/angular-ui-router.min.js",
+          "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"
+        ],
+        [
+          "/dev/jquery.min.js",
+          "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"
+        ]
+      ].forEach(function(script){
+        var src = script[1];
+        if(location.hostname === "localhost") src = script[0];
+        document.write("<script src='" + src + "'>\x3C/script>");
+      });
+    </script>
+    <script src="/script.js"></script>
   </body>
 </html>
