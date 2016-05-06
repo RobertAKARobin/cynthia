@@ -8,13 +8,14 @@
 <div class="lightbox" style="display:none">
   <img class="secretLoader" />
   <div class="slide">
+    <div class="hide" data-ng-click="hide()">&times;</div>
     <img class="image" alt="Main image" data-ng-click="cycle('+')" />
     <div class="info">
       <h1>{{image.title}} <span class="indx">{{index + 1}}/{{images.length}}</span></h1>
       <p>{{image.description}}</p>
     </div>
   </div>
-  <div class="hide" data-ng-click="hide()"></div>
+  <div class="bg" data-ng-click="hide()"></div>
   <div class="prev" data-ng-click="cycle('-')">&lang;</div>
   <div class="next" data-ng-click="cycle('+')">&rang;</div>
 </div>

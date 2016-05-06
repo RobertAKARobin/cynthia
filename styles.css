@@ -357,14 +357,32 @@ footer {
 .lightbox .slide .info h1 .indx {
   float: right;
 }
-.lightbox .hide {
+.lightbox .bg {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  cursor: zoom-out;
   background-color: rgba(0, 0, 0, 0.7);
+}
+.lightbox .hide {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  font-size: 50px;
+  line-height: 50px;
+  cursor: zoom-out;
+}
+.lightbox .prev,
+.lightbox .next,
+.lightbox .hide {
+  color: #aaa;
+  transition: color 0.2s;
+}
+.lightbox .prev:hover,
+.lightbox .next:hover,
+.lightbox .hide:hover {
+  color: #fff;
 }
 .lightbox .prev,
 .lightbox .next {
@@ -423,13 +441,14 @@ nav {
 .lightbox {
   z-index: 9990;
 }
-.lightbox .hide {
+.lightbox .bg {
   z-index: 9991;
 }
 .lightbox .slide {
   z-index: 9992;
 }
 .lightbox .next,
-.lightbox .prev {
+.lightbox .prev,
+.lightbox .hide {
   z-index: 9994;
 }
