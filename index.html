@@ -1,3 +1,43 @@
----
-layout: main
----
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cynthia Corio-Poli, Design</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="/dev/angular.min.js"></script>
+    <script src="/dev/angular-ui-router.min.js"></script>
+    <script src="/dev/jquery.min.js"></script>
+    <script src="/script.js"></script>
+    <base href="/">
+  </head>
+  <body data-ng-app="app" data-ng-class="title">
+    <div style="background-image:url(http://i.imgur.com/P38vmWb.jpg)" class="background"></div>
+    <nav>
+      <ul class="menu">
+        <li><a data-ui-sref="home">HOME</a></li>
+        <li><a href="#">COLLECTIONS</a>
+          <ul class="submenu">
+            <li><a data-state="collection">RINGS</a></li>
+            <li><a data-state="collection">ACCESSORIES</a></li>
+            <li><a data-state="collection">ART OBJECTS</a></li>
+          </ul>
+        </li>
+        <li><a href="#">ABOUT</a>
+          <ul class="submenu">
+            <li><a>CYNTHIA</a></li>
+            <li><a>TECHNIQUES</a></li>
+          </ul>
+        </li>
+        <li><a>CONTACT</a></li>
+      </ul>
+    </nav>
+    <header>
+      <h1>Cynthia Corio - Poli</h1>
+      <p>Design</p>
+    </header>
+    <main data-ui-view></main>
+    <footer>
+      <p>&copy; CYNTHIA CORIO-POLI, 2016</p>
+    </footer>
+  </body>
+</html>
