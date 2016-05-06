@@ -54,7 +54,7 @@ html{
   overflow-y:scroll;
 }
 body{
-  background-color:#333;
+  background-color:#222;
   color:#aaa;
   text-align:center;
   height:100%;
@@ -132,16 +132,13 @@ nav{
         width:20%;
       }
       & > li > ul{
+        display:none;
         position:absolute;
-        top:0;
+        top:$nav-height;
         left:0;
         width:100%;
       }
-      & > li > ul a{
-        display:none;
-      }
-      & > li:hover > ul a,
-      & > li > ul a.active{
+      & > li:hover > ul{
         display:block;
       }
     }
@@ -159,7 +156,7 @@ header{
   
   @media #{$screen}{
     .home &{
-      margin-top:60vh;
+      margin-top:65vh;
     }
   }
   
