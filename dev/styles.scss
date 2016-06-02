@@ -150,11 +150,13 @@ header{
   margin-right:auto;
   margin-top:50px;
   margin-bottom:50px;
-  transition:margin-top 0.3s;
+  transition:margin-top 1s;
   font-family:"Viner Hand";
   color:#fff;
   
+  
   @media #{$screen}{
+    margin-top:0px;
     .home &{
       margin-top:65vh;
     }
@@ -191,8 +193,9 @@ section{
   
   h1{
     color:#fff;
-    font-size:32px;
-    line-height:48px;
+    font-size:18px;
+    line-height:36px;
+    font-weight:lighter;
   }
   h2{
     color:#fff;
